@@ -1,3 +1,33 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+register:
+    path: /register
+    controller: App\Controller\AuthController::register
+    methods: POST
+
+login:
+    path: /login
+    controller: App\Controller\AuthController::login
+    methods: POST
+
+logout:
+    path: /user/{token}
+    controller: App\Controller\AuthController::logout
+    methods: DELETE
+
+users:
+    path: /users/{token}
+    controller: App\Controller\UserController::getAllUsers
+    methods: GET
+
+user:
+    path: /user/{token}
+    controller: App\Controller\UserController::getOneUser
+    methods: GET
+
+update_user:
+    path: /user/{token}
+    controller: App\Controller\UserController::updateUser
+    methods: PUT
+
