@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationSuccessHandler;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUser;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
@@ -58,7 +59,7 @@ class AuthController extends ApiController
      * @param ValidatorInterface $validator
      * @param AuthenticationSuccessHandler $successHandler
      * @return JsonResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function register(Request $request, ValidatorInterface $validator, AuthenticationSuccessHandler $successHandler): JsonResponse
     {

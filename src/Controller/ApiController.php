@@ -20,7 +20,7 @@ class ApiController extends AbstractController
      *
      * @return integer
      */
-    public function getStatusCode()
+    public function getStatusCode(): int
     {
         return $this->statusCode;
     }
@@ -32,7 +32,7 @@ class ApiController extends AbstractController
      *
      * @return self
      */
-    protected function setStatusCode($statusCode)
+    protected function setStatusCode(int $statusCode): ApiController
     {
         $this->statusCode = $statusCode;
 
@@ -46,7 +46,7 @@ class ApiController extends AbstractController
      *
      * @return JsonResponse
      */
-    public function response($data)
+    public function response(array $data): JsonResponse
     {
         return new JsonResponse($data, $this->getStatusCode());
     }
@@ -57,7 +57,7 @@ class ApiController extends AbstractController
      * @param string $errors
      * @return JsonResponse
      */
-    public function respondWithErrors($errors)
+    public function respondWithErrors(string $errors): JsonResponse
     {
         $data = [
             'error' => true,
@@ -74,7 +74,7 @@ class ApiController extends AbstractController
      * @param string $type
      * @return JsonResponse
      */
-    public function respond($data = [], $type = 'users')
+    public function respond($data = [], $type = 'users'): JsonResponse
     {
         $datas = [
             'error' => false,
@@ -94,7 +94,7 @@ class ApiController extends AbstractController
      * @param $created_At
      * @return JsonResponse
      */
-    public function respondWithSuccess($message, $token, $refreshToken, $created_At)
+    public function respondWithSuccess($message, $token, $refreshToken, $created_At): JsonResponse
     {
         $data = [
             'error' => false,
@@ -115,7 +115,7 @@ class ApiController extends AbstractController
      * @param $message
      * @return JsonResponse
      */
-    public function respondSuccess($message)
+    public function respondSuccess($message): JsonResponse
     {
         $data = [
             'error' => false,
@@ -133,7 +133,7 @@ class ApiController extends AbstractController
      *
      * @return JsonResponse
      */
-    public function respondUnauthorized($message)
+    public function respondUnauthorized($message): JsonResponse
     {
         return $this->setStatusCode(409)->respondWithErrors($message);
     }
@@ -145,7 +145,7 @@ class ApiController extends AbstractController
      *
      * @return JsonResponse
      */
-    public function respondValidationError($message)
+    public function respondValidationError(string $message): JsonResponse
     {
         return $this->setStatusCode(401)->respondWithErrors($message);
     }
@@ -157,7 +157,7 @@ class ApiController extends AbstractController
      *
      * @return JsonResponse
      */
-    public function respondNotFound($message)
+    public function respondNotFound(string $message): JsonResponse
     {
         return $this->setStatusCode(404)->respondWithErrors($message);
     }
@@ -169,7 +169,7 @@ class ApiController extends AbstractController
      *
      * @return JsonResponse
      */
-    public function respondCreated($data = [])
+    public function respondCreated($data = []): JsonResponse
     {
         return $this->setStatusCode(201)->response($data);
     }
@@ -181,7 +181,7 @@ class ApiController extends AbstractController
      * @param string $type
      * @return JsonResponse
      */
-    public function respondFecthed($data = [], $type = 'users')
+    public function respondFecthed($data = [], $type = 'users'): JsonResponse
     {
         return $this->setStatusCode(200)->respond($data, $type);
     }
@@ -192,7 +192,7 @@ class ApiController extends AbstractController
      * @param $message
      * @return JsonResponse
      */
-    public function respondDeleted($message)
+    public function respondDeleted($message): JsonResponse
     {
         return $this->setStatusCode(200)->respondSuccess($message);
     }

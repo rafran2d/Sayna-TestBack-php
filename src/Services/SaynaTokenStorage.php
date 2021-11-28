@@ -13,9 +13,9 @@ final class SaynaTokenStorage
      */
     protected $jwsProvider;
 
-    const VERIFIED = 'verified';
-    const EXPIRED = 'expired';
-    const INVALID = 'invalid';
+    public const VERIFIED = 'verified';
+    public const EXPIRED = 'expired';
+    public const INVALID = 'invalid';
 
     /**
      * @var
@@ -41,7 +41,7 @@ final class SaynaTokenStorage
     /**
      * @param string $token
      */
-    public function decode($token)
+    public function decode($token): void
     {
         try {
             $jws = $this->jwsProvider->load($token);
