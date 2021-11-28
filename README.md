@@ -2,6 +2,7 @@
 
 ###cloner le projet git@github.com:rafran2d/Sayna-TestBack-php.git
 ###cd Sayna-TestBack-php
+### Nom de la branch master
 ###composer install
 ###php bin/console doctrine:database:create
 ###php bin/console doctrine:migrations:migrate
